@@ -1,12 +1,9 @@
-// BUILD YOUR SERVER HERE
 const express = require("express");
 const Users = require("./users/model");
 
 const server = express();
 
 server.use(express.json());
-
-// GET
 
 server.get("/api/users", (req, res) => {
   Users.find()
@@ -17,8 +14,6 @@ server.get("/api/users", (req, res) => {
       });
     });
 });
-
-// GET by ID
 
 server.get("/api/users/:id", async (req, res) => {
   try {
@@ -38,8 +33,6 @@ server.get("/api/users/:id", async (req, res) => {
   }
 });
 
-// POST
-
 server.post("/api/users", async (req, res) => {
   try {
     const postedInfo = req.body;
@@ -57,8 +50,6 @@ server.post("/api/users", async (req, res) => {
     });
   }
 });
-
-// PUT
 
 server.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
@@ -84,8 +75,6 @@ server.put("/api/users/:id", async (req, res) => {
   }
 });
 
-// DELETE
-
 server.delete("/api/users/:id", (req, res) => {
   const { id } = req.params;
   Users.remove(id)
@@ -105,4 +94,4 @@ server.delete("/api/users/:id", (req, res) => {
     });
 });
 
-module.exports = server; // EXPORT YOUR SERVER instead of {}
+module.exports = server;
